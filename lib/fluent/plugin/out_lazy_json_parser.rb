@@ -1,7 +1,7 @@
 require_relative './parser'
 
 class Fluent::ParserOutput < Fluent::Output
-    Fluent::Plugin.register_output('json_parser', self)
+    Fluent::Plugin.register_output('lazy_json_parser', self)
     config_param :tag, :string, :default => nil
     config_param :reserve_data, :bool, :default => false
     config_param :key_name, :string
