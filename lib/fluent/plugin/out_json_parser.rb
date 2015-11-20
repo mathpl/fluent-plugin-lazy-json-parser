@@ -30,12 +30,16 @@ class Fluent::ParserOutput < Fluent::Output
         tag = @tag || tag
         es.each do |time,record|
             raw_value = record[@key_name]
-            t,values = raw_value ? parse(raw_value) : [nil,nil]
-            t ||= time
+            if !raw_value.start_with?('"{','{')
+                 Fluent::Engine.emit(tag,time,record)
+            else
+                 t,values = raw_value ? parse(raw_value) : [nil,nil]
+                 t ||= time
 
-            r = @reserve_data ? record.merge(values) : values 
-            if r
-                Fluent::Engine.emit(tag,t,r)
+                 r = @reserve_data ? record.merge(values) : values
+                 if r
+                     Fluent::Engine.emit(tag,t,r)
+                 end
             end
         end
 
