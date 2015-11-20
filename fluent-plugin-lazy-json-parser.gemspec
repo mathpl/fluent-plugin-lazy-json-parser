@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |gem|
   gem.name          = "fluent-plugin-lazy-json-parser"
-  gem.version       = "0.0.2"
+  gem.version       = "0.0.3"
   gem.authors       = ["mathpl"]
   gem.email         = ["math.pay@gmail.com"]
   gem.description   = %q{fluentd plugin to json parse single field if possible or simply forward the data if impossible. Can also combine log structure into single field}
